@@ -28,15 +28,15 @@ Vue.mixin({
       this.$router.replace(url)
     },
     setStorageSync (name, data) {
-      sessionStorage.setItem(name, JSON.stringify(data))
+      window.sessionStorage.setItem(name, JSON.stringify(data))
     },
     getStorageSync (name) {
-      return JSON.parse(sessionStorage.getItem(name))
+      return JSON.parse(window.sessionStorage.getItem(name))
     }
   },
   created () {
-      console.log('chrome')
-      this.service = httpService
+    console.log('chrome')
+    this.service = httpService
   }
 })
 /* eslint-disable no-new */
