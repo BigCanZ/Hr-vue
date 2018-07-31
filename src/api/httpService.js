@@ -72,8 +72,12 @@ export function fetch (url, params = {}, fn) {
       params: params
     })
       .then(response => {
-        console.log(fn)
-        let data = fn(response.data)
+        let data
+        if (fn) {
+          data = fn(response.data)
+        } else {
+          data = response.data
+        }
         resolve(data)
       })
       .catch(err => {

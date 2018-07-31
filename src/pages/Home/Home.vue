@@ -26,7 +26,8 @@ export default {
     getInfo () {
       this.$fetch(this.serviceUrl + 'index.json', {}, api.listData)
         .then((response) => {
-          console.log('1')
+          // console.log(response)
+          console.log(response)
         })
     },
     handerClick () {
