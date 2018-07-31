@@ -34,7 +34,8 @@ module.exports = {
     extensions: ['.js', '.vue', '.json', '.html'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
+      '@': resolve('src'),
+      'styles': resolve('/static/styles')
     }
   },
   module: {
@@ -50,18 +51,18 @@ module.exports = {
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
-      {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ],
-      },
-      {
-            test: /\.less$/,
-
-            loader: "style-loader!css-loader!less-loader",
-      },
+      // {
+      //   test: /\.css$/,
+      //   use: [
+      //     'vue-style-loader',
+      //     'css-loader',
+      //     'stylus-loader'
+      //   ]
+      // },
+      // {
+      //   test: /\.less$/,
+      //   loader: "style-loader!css-loader!less-loader"
+      // },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',

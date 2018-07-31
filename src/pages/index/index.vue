@@ -63,10 +63,10 @@ export default {
   margin-bottom: 5px;
   border: 1px solid #ccc;
   height:25px;
-    text-overflow:clip;
-    overflow:hidden;
-    white-space:nowrap;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  text-overflow:clip;
+  overflow:hidden;
+  white-space:nowrap;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   -webkit-user-select: none;
   -moz-user-focus: none;
   -moz-user-select: none;
@@ -82,12 +82,12 @@ export default {
   border: 1px solid blue;
 }
 .container .girl{
-    width: 275px;
-    height: 400px;
+  width: 275px;
+  height: 400px;
 }
 .container .logo{
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
 
 </style>
