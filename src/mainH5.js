@@ -22,7 +22,7 @@ Vue.mixin({
   data () {
     return {
       service: '',
-      serviceUrl: '/static/mock',
+      serviceUrl: '/static/mock/',
       router: '/',
       imgSrc: ''
     }

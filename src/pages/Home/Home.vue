@@ -1,12 +1,37 @@
 <template>
   <div class="input-outer">
+    <!-- 文本框 -->
     <div class="input-box border-bottom">
       <span class="input-title">一级负责人</span>
-      <input type="text" @click="handerClick" class="input-text" :value="this.val" />
+      <input type="text" class="input-text"/>
     </div>
+    <!-- 只读状态下的文本框用div代替 -->
+    <div class="input-box border-bottom">
+      <span class="input-title">一级负责人</span>
+      <div class="input-text">111</div>
+    </div>
+    <!-- 文本域 -->
     <div class="textarea-box">
       <span class="input-title">一级负责人</span>
-      <textarea class="input-textarea" :value="this.val"></textarea>
+      <textarea class="input-textarea"></textarea>
+    </div>
+    <!-- 只读状态下的文本域用div代替 -->
+    <div class="textarea-box">
+      <span class="input-title">一级负责人</span>
+      <div class="input-textarea">111</div>
+    </div>
+    <div class="choose-box">
+      <span class="input-title">事件阅知人员</span>
+      <div class="choose-inner-box">
+        <input type="radio" name="c" class="input-choose" id="radio_01">
+        <label for="radio_01">哈哈哈</label>
+        <input type="radio" name="c" class="input-choose" id="radio_02">
+        <label for="radio_02">哈哈哈</label>
+        <input type="radio" name="c" class="input-choose" id="radio_03">
+        <label for="radio_03">哈哈哈</label>
+        <input type="radio" name="c" class="input-choose" id="radio_04">
+        <label for="radio_04">哈哈哈</label>
+      </div>
     </div>
   </div>
 </template>
@@ -17,21 +42,19 @@ export default {
   name: 'Home',
   data () {
     return {
-      val: '上海大学1',
-      service: '',
-      serviceUrl: '/static/mock/'
+      fromData: ''
     }
   },
   methods: {
     getInfo () {
       this.$fetch(this.serviceUrl + 'index.json', {}, api.listData)
         .then((response) => {
-          // console.log(response)
           console.log(response)
+          // let fromData = response.blocks.result.rows
+          // let dataSort = response.blocks.result.meta
+          // console.log(fromData)
+          // console.log(dataSort)
         })
-    },
-    handerClick () {
-      console.log(this.val)
     }
   },
   created () {
@@ -46,9 +69,9 @@ export default {
 
 .border-bottom
   &:before
-    border-color:rgba(255,255,255,.3)
+    border-color:rgba(255,255,255,.7)
   &:after
-    border-color:rgba(255,255,255,.3)
+    border-color:rgba(255,255,255,.7)
 .input-outer
   width 94%
   margin 0px auto
@@ -89,4 +112,28 @@ export default {
       border-radius .1rem
       resize none
       color $textColor
+  .choose-box
+    width 90%
+    margin 0px auto;
+    .input-title
+      display block
+      height .8rem
+      line-height .8rem
+      color #fff
+    .choose-inner-box
+      overflow hidden
+      .input-choose
+        display none
+      .input-choose + label
+        display inline-block
+        line-height .48rem
+        padding 0 .3rem
+        color $textColor
+        border 1px solid #ffffff
+        border-radius .3rem
+        float left
+        margin 0 .1rem .1rem 0
+      .input-choose:checked + label
+        color $HoverTextColor
+        background $textColor
 </style>
