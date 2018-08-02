@@ -1,16 +1,28 @@
 import Vue from 'vue'
-import App from './App'
+import Vuex from 'vuex'
+import App from './AppH5'
+import {post, fetch, patch, put} from './api/httpService'
 import store from './store'
-import wxService from './api/wxService'
+import fastClick from 'fastclick'
+
+import 'styles/reset.css'
+import 'styles/border.css'
 
 Vue.config.productionTip = false
 App.mpType = 'app'
+Vue.use(Vuex)
+fastClick.attach(document.body)
+Vue.prototype.$post = post
+Vue.prototype.$fetch = fetch
+Vue.prototype.$patch = patch
+Vue.prototype.$put = put
 Vue.prototype.$store = store
 
 Vue.mixin({
   data () {
     return {
       service: '',
+      serviceUrl: '/static/mock/',
       router: '/',
       imgSrc: '/'
     }

@@ -6,18 +6,13 @@
         <span class="input-title">{{item.fieldName}}</span>
         <input type="text" class="input-text"
         :id="item.propertyId"
-        :value="showDeatil (item.fieldForm, item) !== false ? showDeatil (item.fieldForm, item): item.propertyValue"
+        :value="item.propertyValue"
         v-if="showRead(item.ifReadonly)"/>
         <!-- 只读状态下的文本框用div代替 -->
         <div class="input-text"
         v-if="showReadOnly(item.ifReadonly)"
-        :id="item.propertyId">{{showDeatil (item.fieldForm, item) !== false ? showDeatil (item.fieldForm, item): item.propertyValue}}</div>
+        :id="item.propertyId">{{item.propertyValue}}</div>
       </div>
-      <!-- <div class="input-box border-bottom" v-if="showReadOnlyInput(item.fieldForm, item.ifReadonly)">
-        <span class="input-title">{{item.fieldName}}</span>
-        <div class="input-text" :id="item.propertyId">{{item.propertyValue}}</div>
-      </div> -->
-      <!-- 文本域 -->
       <div class="textarea-box" v-if="showTextarea(item.fieldForm)">
         <span class="input-title">{{item.fieldName}}</span>
         <textarea class="input-textarea"
@@ -30,11 +25,6 @@
         :value="item.propertyValue"
         v-if="showReadOnly(item.ifReadonly)">{{item.propertyValue}}</div>
       </div>
-      <!-- 只读状态下的文本域用div代替 -->
-      <!-- <div class="textarea-box">
-        <span class="input-title">{{item.fieldName}}</span>
-       
-      </div> -->
       <!-- <div class="choose-box" v-if="showInput(item.fieldForm)">
         <span class="input-title">事件阅知人员</span>
         <div class="choose-inner-box">
@@ -63,32 +53,11 @@ export default {
   },
   methods: {
     getInfo () {
-      this.$fetch(this.serviceUrl + 'index.json', {}, api.listData)
-        .then((response) => {
+      this.$fetch(this.serviceUrl + 'index.json', {}, api.listData).then(
+        response => {
           this.fromData = response.blocks.result.rows
-        })
-    },
-    showDeatil (form, itemlist) {
-      if (form === '1' || form === '2') {
-        // 当组件对应的是下拉框
-        if (itemlist.propertyValue !== '') {
-          let rowList = itemlist.selectdata.rows
-          console.log(rowList[itemlist.propertyValue])
-          rowList.forEach(item => {
-            if (item.selectValueId === itemlist.propertyValue) {
-              // console.log(item.selectValue)
-              // console.log(itemlist.propertyValue)
-              return item.selectValue
-            } else {
-              return false
-            }
-          })
-        } else {
-          return false
         }
-      } else {
-        return false
-      }
+      )
     },
     showRead (read) {
       // 显示可编辑
@@ -131,75 +100,75 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '~styles/varibles.styl'
+@import '~styles/varibles.styl';
 
 .border-bottom
   &:before
-    border-color:rgba(255,255,255,.7)
+    border-color rgba(255, 255, 255, 0.7);
   &:after
-    border-color:rgba(255,255,255,.7)
+    border-color rgba(255, 255, 255, 0.7);
 .input-outer
   width 94%
   margin 0px auto
   background $bgColor
-  border-radius .1rem
+  border-radiu: 0.1rem
   padding 10px 0px
-  margin-top .1rem 
+  margin-top: 0.1rem
   .input-box
-    width 90%;
-    margin 0px auto;
+    width 90%
+    margin 0px auto
     display flex
     overflow hidden
     .input-title
       display inline-block
-      height .8rem
-      line-height .8rem
-      color #fff
+      height 0.8rem
+      line-height 0.8rem
+      color: #fff
     .input-text
-      height .8rem
-      line-height .8rem
+      height 0.8rem
+      line-height 0.8rem
       flex 1
       text-align right
       background transparent
       color $textColor
-  .textarea-box
+  .textarea-box 
     width 90%
-    margin 0px auto;
+    margin 0px auto
     .input-title
       display block
-      height .8rem
-      line-height .8rem
+      height 0.8rem
+      line-height 0.8rem
       color #fff
     .input-textarea
       width calc(100% - 10px)
-      padding .05rem 5px
+      padding 0.05rem 5px
       height 1.6rem
-      background rgba(255,255,255,.1)
-      border-radius .1rem
+      background rgba(255, 255, 255, 0.1)
+      border-radius 0.1rem
       resize none
       color $textColor
-  .choose-box
+  .choose-box 
     width 90%
-    margin 0px auto;
+    margin 0px auto
     .input-title
       display block
-      height .8rem
-      line-height .8rem
+      height 0.8rem
+      line-height 0.8rem
       color #fff
-    .choose-inner-box
+    .choose-inner-box 
       overflow hidden
       .input-choose
         display none
       .input-choose + label
         display inline-block
-        line-height .48rem
-        padding 0 .3rem
+        line-height 0.48rem
+        padding 0 0.3rem
         color $textColor
         border 1px solid #ffffff
-        border-radius .3rem
+        border-radius 0.3rem
         float left
-        margin 0 .1rem .1rem 0
-      .input-choose:checked + label
+        margin 0 0.1rem 0.1rem 0
+      .input-choose:checked + label 
         color $HoverTextColor
         background $textColor
 </style>
