@@ -12,7 +12,8 @@ Vue.mixin({
     return {
       service: '',
       router: '/',
-      imgSrc: '/'
+      imgSrc: '/',
+      serviceUrl: '/static/mock/'
     }
   },
   methods: {
@@ -33,7 +34,6 @@ Vue.mixin({
     }
   },
   created () {
-    // console.log('wx')
     this.service = wxService
   }
 })

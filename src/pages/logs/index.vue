@@ -34,25 +34,20 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-.counter-warp {
-  text-align: center;
-  padding-top: 0;
-}
-.log-list {
-  display: flex;
-  flex-direction: column;
-  padding: 40/7.5vw;
-}
-
-.log-item {
-  margin: 10/7.5vw;
-}
-.home {
-  display: inline-block;
-  margin: 10px auto;
-  padding: 5px 10px;
-  color: blue;
-  border: 1px solid blue;
-}
+<style lang="stylus" scoped>
+.counter-warp
+  text-align: center
+  padding-top: 0
+  .home
+    display: inline-block
+    margin: 10px auto
+    padding: 5px 10px
+    color: blue;
+    border: 1px solid blue
+  .log-list
+    display: flex
+    flex-direction: column
+    padding: 40/7.5vw
+    .log-item
+      margin: 10/7.5vw
 </style>
